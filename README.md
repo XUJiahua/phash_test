@@ -60,3 +60,33 @@ expect1
 ```
 
 两个指标越接近1，说明效果越好。
+
+
+### 分析
+
+问：一个URL(file)对应不同hash数的分布。
+
+```
+csvsql --query "select cnt, count(1) from (select file, count(distinct feature) as cnt from 'data' group by file) group by cnt order by cnt" data.csv
+```
+
+问：一个hash值(feature)对应不同URL（file）数的分布。
+
+```
+csvsql --query "select cnt, count(1) from (select feature, count(distinct file) as cnt from 'data' group by feature) group by cnt order by cnt" data.csv
+```
+
+问：列举hash值，满足，一个hash值对应不止一个URL。
+
+```
+csvsql --query "select feature, count(distinct file) as cnt from 'data' group by feature having cnt > 1 order by cnt desc" data.csv > similar.csv
+```
+
+
+问：可视化查看hash值不止一个URL的相关图像。
+
+参数为hash值。
+
+```
+./open_same_hash_images.sh ec9e1413e268c377
+```
