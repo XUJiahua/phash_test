@@ -1,0 +1,6 @@
+download_*
+similar_folder
+.vscode
+*.txt
+.DS_Store
+*.csv
