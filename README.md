@@ -14,7 +14,7 @@ https://github.com/JohannesBuchner/imagehash
 ./download.sh
 ```
 
-其中，头像并行下载工具`avatar_dl`(https://github.com/XUJiahua/avatar_dl)如果不是在Mac上就要自己重新编译。
+其中，头像并行下载工具`avatar_dl`(https://github.com/XUJiahua/avatar_dl)，如果不是在Mac上就要自己重新编译。
 `sample100k.csv`是头像链接，一行一个，考虑隐私，不作公开。
 
 ### 生成 phash
