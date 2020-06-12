@@ -70,6 +70,12 @@ expect1
 csvsql --query "select cnt, count(1) from (select file, count(distinct feature) as cnt from 'data' group by file) group by cnt order by cnt" data.csv
 ```
 
+问：列举URL和对应的hash值，满足，一个URL对应不止一个hash值。
+
+```
+csvsql --query "select distinct a.file, a.feature from 'data' as a inner join (select file, count(distinct feature) as cnt from 'data' group by file having cnt > 1) as b on a.file=b.file order by a.file" data.csv > unsimilar.csv
+```
+
 问：一个hash值(feature)对应不同URL（file）数的分布。
 
 ```
